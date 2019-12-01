@@ -19,9 +19,46 @@ class M_daftar_online extends CI_Model{
 			return $kodejadi;  
 		}
 
-        function daftar_online($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingkat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$photo,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran,$qr_code){
-		$hsl=$this->db->query("INSERT INTO tbl_daftar_online (nama_lengkap,tanggal_lahir,agama,no_telp_darurat,ukuran_baju,tingkat_sekolah,alamat,berat_badan,tinggi_badan,golongan_darah,memiliki_penyakit,riwayat_penyakit,memiliki_alergi,riwayat_alergi,photo,nama_ortu,status_hubungan,nik_ktp,no_telp_orangtua,email,pekerjaan,gaji,sesi,kabupaten,provinsi,kelurahan,kecamatan,kode_pos,no_pendaftaran,qr_code) VALUES ('$nama_lengkap','$tanggal_lahir','$agama','$no_telp_darurat','$ukuran_baju','$tingkat_sekolah','$alamat','$berat_badan','$tinggi_badan','$golongan_darah','$memiliki_penyakit','$riwayat_penyakit','$memiliki_alergi','$riwayat_alergi','$photo','$nama_ortu','$status_hubungan','$nik_ktp','$no_telp_orangtua','$email','$pekerjaan','$gaji','$sesi','$kabupaten','$provinsi','$kelurahan','$kecamatan','$kode_pos','$no_pendaftaran','$qr_code')");
-		return $hsl;
+        function daftar_online($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingkat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$photo,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran,$image_qr){
+		
+			$hsl = array(
+				'nama_lengkap' => $nama_lengkap,
+				'tanggal_lahir' => $tanggal_lahir,
+				'agama' => $agama,
+				'no_telp_darurat' => $no_telp_darurat,
+				'ukuran_baju' => $ukuran_baju,
+				'tingkat_sekolah' => $tingkat_sekolah,
+				'alamat' => $alamat,
+				'berat_badan' => $berat_badan,
+				'tinggi_badan' => $tinggi_badan,
+				'golongan_darah' => $golongan_darah,
+				'memiliki_penyakit' => $memiliki_penyakit,
+				'riwayat_penyakit' => $riwayat_penyakit,
+				'memiliki_alergi' => $memiliki_alergi,
+				'riwayat_alergi' => $riwayat_alergi,
+				'photo' => $photo,
+				'nama_ortu' => $nama_ortu,
+				'status_hubungan' => $status_hubungan,
+				'nik_ktp' => $nik_ktp,
+				'no_telp_orangtua' => $no_telp_orangtua,
+				'email' => $email,
+				'pekerjaan' => $pekerjaan,
+				'gaji' => $gaji,
+				'sesi' => $sesi,
+				'kabupaten' => $kabupaten,
+				'provinsi' => $provinsi,
+				'kelurahan' => $kelurahan,
+				'kecamatan' => $kecamatan,
+				'kode_pos' => $kode_pos,
+				'no_pendaftaran' => $no_pendaftaran,
+				'qr_code' => $image_qr,
+			
+			);
+
+		$this->db->insert('tbl_daftar_online', $hsl);
+		
+		// $hsl=$this->db->query("INSERT INTO tbl_daftar_online (nama_lengkap,tanggal_lahir,agama,no_telp_darurat,ukuran_baju,tingkat_sekolah,alamat,berat_badan,tinggi_badan,golongan_darah,memiliki_penyakit,riwayat_penyakit,memiliki_alergi,riwayat_alergi,photo,nama_ortu,status_hubungan,nik_ktp,no_telp_orangtua,email,pekerjaan,gaji,sesi,kabupaten,provinsi,kelurahan,kecamatan,kode_pos,no_pendaftaran,qr_code) VALUES ('$nama_lengkap','$tanggal_lahir','$agama','$no_telp_darurat','$ukuran_baju','$tingkat_sekolah','$alamat','$berat_badan','$tinggi_badan','$golongan_darah','$memiliki_penyakit','$riwayat_penyakit','$memiliki_alergi','$riwayat_alergi','$photo','$nama_ortu','$status_hubungan','$nik_ktp','$no_telp_orangtua','$email','$pekerjaan','$gaji','$sesi','$kabupaten','$provinsi','$kelurahan','$kecamatan','$kode_pos','$no_pendaftaran','$qr_code')");
+		// return $hsl;
         }
         
         function daftar_online_no_img($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingkat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran,$qr_code){
@@ -79,5 +116,5 @@ class M_daftar_online extends CI_Model{
 			$get = $this->db->get('dd_desa');
 			return $get;
 		}
-
+	
 }

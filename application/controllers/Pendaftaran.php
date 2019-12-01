@@ -6,7 +6,8 @@ class Pendaftaran extends CI_Controller{
 		$this->load->model('m_wilayah','model');
 		$this->load->model('m_pengunjung');
 		$this->load->library('upload');
-		$this->load->library('email');
+        $this->load->library('email');
+        $this->load->library('ciqrcode');
   		$this->m_pengunjung->count_visitor();
 	}
 
@@ -371,7 +372,25 @@ class Pendaftaran extends CI_Controller{
                     $kode_pos=strip_tags($this->input->post('kode_pos'));
                     $no_pendaftaran=strip_tags($this->input->post('no_pendaftaran'));
 
-                    $this->m_daftar_online->daftar_online($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingakat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$photo,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran);
+                    $config['cacheable']	= true; //boolean, the default is true
+					$config['cachedir']		= './assets/'; //string, the default is application/cache/
+					$config['errorlog']		= './assets/'; //string, the default is application/logs/
+					$config['imagedir']		= './assets/qrcodes/'; //direktori penyimpanan qr code
+					$config['quality']		= true; //boolean, the default is true
+					$config['size']			= '1024'; //interger, the default is 1024
+					$config['black']		= array(224,255,255); // array, default is array(255,255,255)
+					$config['white']		= array(70,130,180); // array, default is array(0,0,0)
+					$this->ciqrcode->initialize($config);
+
+					$image_qr=$no_pendaftaran.'.png'; //buat name dari qr code sesuai dengan nim
+
+					$params['data'] = $no_pendaftaran; //data yang akan di jadikan QR CODE
+					$params['level'] = 'H'; //H=High
+					$params['size'] = 10;
+					$params['savename'] = FCPATH.$config['imagedir'].$image_qr; //simpan image QR CODE ke folder assets/images/
+					$this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+
+                    $this->m_daftar_online->daftar_online($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingakat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$photo,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran,$image_qr);
                     redirect('sukses');
                     // echo '<pre>';
                     // print_r($config);
@@ -407,8 +426,26 @@ class Pendaftaran extends CI_Controller{
             $kecamatan=strip_tags($this->input->post('kecamatan'));
             $kode_pos=strip_tags($this->input->post('kode_pos'));
             $no_pendaftaran=strip_tags($this->input->post('no_pendaftaran'));
+            
+            $config['cacheable']	= true; //boolean, the default is true
+            $config['cachedir']		= './assets/'; //string, the default is application/cache/
+            $config['errorlog']		= './assets/'; //string, the default is application/logs/
+            $config['imagedir']		= './assets/qrcodes/'; //direktori penyimpanan qr code
+            $config['quality']		= true; //boolean, the default is true
+            $config['size']			= '1024'; //interger, the default is 1024
+            $config['black']		= array(224,255,255); // array, default is array(255,255,255)
+            $config['white']		= array(70,130,180); // array, default is array(0,0,0)
+            $this->ciqrcode->initialize($config);
 
-            $this->m_daftar_online->daftar_online_no_img($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingakat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran);
+            $image_qr=$no_pendaftaran.'.png'; //buat name dari qr code sesuai dengan nim
+
+            $params['data'] = $no_pendaftaran; //data yang akan di jadikan QR CODE
+            $params['level'] = 'H'; //H=High
+            $params['size'] = 10;
+            $params['savename'] = FCPATH.$config['imagedir'].$image_qr; //simpan image QR CODE ke folder assets/images/
+            $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+                    
+            $this->m_daftar_online->daftar_online_no_img($nama_lengkap,$tanggal_lahir,$agama,$no_telp_darurat,$ukuran_baju,$tingakat_sekolah,$alamat,$berat_badan,$tinggi_badan,$golongan_darah,$memiliki_penyakit,$riwayat_penyakit,$memiliki_alergi,$riwayat_alergi,$nama_ortu,$status_hubungan,$nik_ktp,$no_telp_orangtua,$email,$pekerjaan,$gaji,$sesi,$kabupaten,$provinsi,$kelurahan,$kecamatan,$kode_pos,$no_pendaftaran,$image_qr);
             redirect('sukses');         
         }
 

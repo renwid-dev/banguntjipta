@@ -8,7 +8,7 @@
         $agama=$in['agama']; 
         $no_telp_darurat=$in['no_telp_darurat']; 
         $ukuran_baju=$in['ukuran_baju']; 
-        $tingakat_sekolah=$in['tingakat_sekolah']; 
+        $tingkat_sekolah=$in['tingkat_sekolah']; 
         $berat_badan=$in['berat_badan']; 
         $tinggi_badan=$in['tinggi_badan']; 
         $golongan_darah=$in['golongan_darah']; 
@@ -31,6 +31,7 @@
         $kecamatan=$in['kecamatan']; 
         $kode_pos=$in['kode_pos']; 
         $no_pendaftaran=$in['no_pendaftaran'];
+        $qr_code=$in['qr_code'];
     ?>
 
     <center><h2><strong>No Pendaftaran : <?php echo $no_pendaftaran; ?></strong></h2></center>
@@ -44,28 +45,11 @@
         <td width="30%">Tanggal Lahir</td>
         <td width="70%"><?php echo $tanggal_lahir;?></td>
     </tr>
-
-    <!-- <tr>
-        <td width="30%">Agama</td>
-        <td width="70%"><?php echo $agama;?></td>
-    </tr> -->
-
-    <!--
-    <tr>
-        <td width="30%"> No Telp Darurat </td>
-        <td width="70%"><?php echo $no_telp_darurat;?></td>
-    </tr>
-    -->
     
     <tr>
         <td width="30%"> Ukuran Kaos </td>
         <td width="70%"><?php echo $ukuran_baju;?></td>
     </tr>
-
-    <!-- <tr>
-        <td width="30%"> Tingkat Pendidikan </td>
-        <td width="70%"><?php echo $tingakat_sekolah;?></td>
-    </tr> -->
 
     <tr>
         <td width="30%"> Berat Badan </td>
@@ -81,16 +65,6 @@
         <td width="30%"> Golongan Darah </td>
         <td width="70%"><?php echo $golongan_darah;?></td>
     </tr>
-
-    <!-- <tr>
-        <td width="30%"> Memiliki Penyakit </td>
-        <td width="70%"><?php echo $memiliki_penyakit;?></td>
-    </tr>
-
-    <tr>
-        <td width="30%"> Riwayat Penyakit </td>
-        <td width="70%"><?php echo $riwayat_penyakit;?></td>
-    </tr> -->
 
     <tr>
         <td width="30%"> Memiliki Alergi </td>
@@ -131,16 +105,6 @@
         <td width="30%"> Email</td>
         <td width="70%"><?php echo $email;?></td>
     </tr>
-
-    <!--<tr>-->
-    <!--    <td width="30%"> Pekerjaan </td>-->
-    <!--    <td width="70%"><?php echo $pekerjaan;?></td>-->
-    <!--</tr>-->
-
-    <!-- <tr>
-        <td width="30%"> Pendapatan </td>
-        <td width="70%"><?php echo $gaji;?></td>
-    </tr> -->
 
     <tr>
         <td width="30%"> Rencana Sunat </td>

@@ -136,7 +136,7 @@
           <a href="<?php echo base_url().'admin/daftar_online'?>">
             <i class="fa fa-user"></i><span>Daftar Online</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green"><?php echo $jum_daftar;?></small>
+              <!-- <small class="label pull-right bg-green"><?php echo $jum_daftar;?></small> -->
             </span>
           </a>
         </li>
@@ -196,7 +196,8 @@
 
           <div class="box">
           <div class="box-header">
-              <a class="btn btn-success btn-flat" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span> Add Pendaftaran</a>
+              <a class="btn btn-success btn-flat" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span> Add Pendaftaran</a> 
+              <!-- <a class="btn btn-primary btn-flat" data-toggle="modal" data-target="#ModalValidasi">Validasi Pendaftaran</a> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -214,24 +215,24 @@
                 </thead>
                 <tbody>
 
-                <?php
-					  $no=0;
-  					foreach ($data->result_array() as $i) :
-               $no++;
-               
-               $id=$i['daftar_online_id'];
-               $qr_code=$i['qr_code'];
-               $no_pendaftaran=$i['no_pendaftaran'];
-               $photo=$i['photo'];
-               $nama_lengkap=$i['nama_lengkap'];
-               $agama=$i['agama'];
-               $tanggal_lahir=$i['tanggal_lahir'];
-               $daftar_online_tanggal=$i['daftar_online_tanggal'];
+              <?php
+                $no=0;
+                foreach ($data->result_array() as $i) :
+                  $no++;
+                  
+                  $id=$i['daftar_online_id'];
+                  $qr_code=$i['qr_code'];
+                  $no_pendaftaran=$i['no_pendaftaran'];
+                  $photo=$i['photo'];
+                  $nama_lengkap=$i['nama_lengkap'];
+                  $agama=$i['agama'];
+                  $tanggal_lahir=$i['tanggal_lahir'];
+                  $daftar_online_tanggal=$i['daftar_online_tanggal'];
 
                     ?>
                 <tr>
                   <td><?php echo $no_pendaftaran;?></td>
-                  <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$qr_code;?>"></td>
+                  <td><img style="width: 50px;" src="<?php echo base_url().'assets/qrcodes/'.$qr_code;?>"></td>
                   <?php if(empty($photo)):?>
                   <td><img width="40" height="40" class="img-circle" src="<?php echo base_url().'assets/images/user_blank.png';?>"></td>
                   <?php else:?>
@@ -241,8 +242,8 @@
                   <td><?php echo $tanggal_lahir;?></td>
                   <td><?php echo $daftar_online_tanggal;?></td>
                   <td style="text-align:right;">
-                        <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id;?>"><span class="fa fa-pencil"></span></a>
-                        <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id;?>"><span class="fa fa-trash"></span></a>
+                    <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id;?>"><span class="fa fa-pencil"></span></a>
+                    <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id;?>"><span class="fa fa-trash"></span></a>
                   </td>
                 </tr>
 				    <?php endforeach;?>
@@ -286,105 +287,105 @@
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Nama Lengkap</label>
                         <div class="col-sm-7">
-                            <input type="text" name="nama_lengkap" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="nama_lengkap" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Tanggal Lahir</label>
                         <div class="col-sm-7">
-                            <input type="date" name="tanggal_lahir" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="date" name="tanggal_lahir" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Berat Badan</label>
                         <div class="col-sm-7">
-                            <input type="number" name="berat_badan" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="number" name="berat_badan" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Tinggi Badan</label>
                         <div class="col-sm-7">
-                            <input type="number" name="tinggi_badan" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="number" name="tinggi_badan" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Ukuran Baju</label>
                         <div class="col-sm-7">
-                            <input type="text" name="ukuran_baju" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="ukuran_baju" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Golongan Darah</label>
                         <div class="col-sm-7">
-                            <input type="text" name="golongan_darah" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="golongan_darah" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Alergi</label>
                         <div class="col-sm-7">
-                            <input type="text" name="memiliki_alergi" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="memiliki_alergi" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Riwayat Alergi</label>
                         <div class="col-sm-7">
-                            <input type="text" name="riwayat_alergi" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="riwayat_alergi" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Nama Orang Tua/Wali/Ketua Kelompok</label>
                         <div class="col-sm-7">
-                            <input type="text" name="nama_ortu" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="nama_ortu" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Status Hubungan Dengan Anak</label>
                         <div class="col-sm-7">
-                            <input type="text" name="status_hubungan" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="status_hubungan" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">No. Identitas Diri (KTP) </label>
                         <div class="col-sm-7">
-                            <input type="text" name="nik_ktp" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="nik_ktp" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">No. Telp Orang Tua/Wali/Ketua Kelompok</label>
                         <div class="col-sm-7">
-                            <input type="text" name="no_telp_orangtua" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="no_telp_orangtua" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Email Orang Tua/Wali/Ketua Kelompok</label>
                         <div class="col-sm-7">
-                            <input type="email" name="email" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="email" name="email" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Alamat Sekarang</label>
                         <div class="col-sm-7">
-                            <input type="text" name="alamat" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="alamat" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Rencana Sunat</label>
                         <div class="col-sm-7">
-                            <input type="text" name="sesi" class="form-control" id="inputUserName" placeholder="..." required>
+                            <input type="text" name="sesi" class="form-control" id="inputUserName" placeholder="...">
                         </div>
                     </div>
 
@@ -436,6 +437,7 @@
         $kode_pos=$i['kode_pos']; 
         $no_pendaftaran=$i['no_pendaftaran'];
         $alamat=$i['alamat'];
+        $qr_code=$i['qr_code'];
 
             ?>
 
@@ -444,14 +446,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-                        <h4 class="modal-title" id="myModalLabel">No Pendaftaran | <?php echo $no_pendaftaran; ?></h4>
+                        <h4 class="modal-title" id="myModalLabel">No Pendaftaran | <img style="width: 30px;" src="<?php echo base_url().'assets/qrcodes/'.$qr_code;?>"> <?php echo $no_pendaftaran; ?></h4>
                     </div>
                     <form class="form-horizontal" action="<?php echo base_url().'admin/daftar_online/update_daftar_online'?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                     <input type="hidden" name="kode" value="<?php echo $id;?>"/>
                     <input type="hidden" name="gambar" value="<?php echo $photo;?>"/>
                     <input type="hidden" name="no_pendaftaran" value="<?php echo $no_pendaftaran; ?>"/>
-                    
+                  
                     <div class="form-group">
                         <label for="inputUserName" class="col-sm-4 control-label">Nama Lengkap</label>
                         <div class="col-sm-7">
@@ -577,7 +579,32 @@
         </div>
   <?php endforeach;?>
   <!--Modal Edit daftar>-->
-   
+
+   <!-- Validasi -->
+   <!-- <div class="modal fade" id="ModalValidasi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+                </div>
+                
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                      <center><h3 class="panel-title">Arahkan Kode QR Ke Kamera!</h3></center> 
+                    </div>
+                      <div class="panel-body text-center" >
+                        <canvas></canvas>
+                        <hr>
+                        <select></select>
+                      </div>
+                </div>
+                    
+
+            </div>
+        </div>
+    </div> -->
+    <!-- End Validasi -->
+
   <?php foreach ($data->result_array() as $i) :
               $id=$i['daftar_online_id'];
               $daftar_online_tanggal=$i['daftar_online_tanggal'];
@@ -648,6 +675,38 @@
     });
   });
 </script>
+
+<!-- <script type="text/javascript" src="<?php echo base_url().'assets/js/qrcodelib.js' ?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'assets/js/webcodecamjquery.js' ?>"></script>
+<script type="text/javascript">
+    var arg = {
+        resultFunction: function(result) {
+            var redirect = '../validasi';
+            $.redirectPost(redirect, {no_pendaftaran: result.code});
+        }
+    };
+    
+    var decoder = $("canvas").WebCodeCamJQuery(arg).data().plugin_WebCodeCamJQuery;
+    decoder.buildSelectMenu("select");
+    decoder.play();
+ 
+    $('select').on('change', function(){
+        decoder.stop().play();
+    });
+
+    $.extend(
+    {
+        redirectPost: function(location, args)
+        {
+            var form = '';
+            $.each( args, function( key, value ) {
+                form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+            });
+            $('<form action="'+location+'" method="POST">'+form+'</form>').appendTo('body').submit();
+        }
+    });
+
+</script> -->
 
 </body>
 </html>
